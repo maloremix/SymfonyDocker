@@ -16,25 +16,26 @@
 ```bash
 git clone https://github.com/ваш_пользователь/ваш_репозиторий.git
 cd ваш_репозиторий
+```
 
 2. Создайте файл `.env` на основе `.env.dist` и настройте переменные окружения, если это необходимо.
 
 ```bash
 # Пример команды для создания файла .env
 cp .env.dist .env
-```bash
+```
 
 3. Выполните следующую команду для развертывания вашего Symfony приложения с использованием Docker Compose:
 
 ```bash
 docker-compose up -d
-```bash
+```
 
 4. Примените миграции, чтобы создать базу данных и необходимые таблицы:
 
 ```bash
 docker-compose exec app php bin/console doctrine:migrations:migrate
-```bash
+```
 
 5. Ваше Symfony приложение теперь доступно по адресу [http://localhost:80](http://localhost:80).
 
