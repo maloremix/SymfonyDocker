@@ -4,28 +4,23 @@
 
 ## Требования
 
-Для развертывания этого приложения вам понадобятся следующие инструменты:
-
-- Docker: [Инструкции по установке Docker](https://docs.docker.com/get-docker/)
-- Docker Compose: [Инструкции по установке Docker Compose](https://docs.docker.com/compose/install/)
+Для развертывания этого приложения понадобится DockerDesktop. Вместе с ним установится docker-compose
 
 ## Шаги по развертыванию
 
 1. Клонируйте репозиторий на свой локальный компьютер:
 
 ```bash
-git clone https://github.com/ваш_пользователь/ваш_репозиторий.git
-cd ваш_репозиторий
+git clone https://github.com/maloremix/SymfonyDocker.git
 ```
 
-2. Создайте файл `.env` на основе `.env.dist` и настройте переменные окружения, если это необходимо.
-
+2. Создайте файл `.env` на основе `.env.dist`.
 ```bash
 # Пример команды для создания файла .env
 cp .env.dist .env
 ```
 
-3. Выполните следующую команду для развертывания вашего Symfony приложения с использованием Docker Compose:
+3. Выполните следующую команду для развертывания вашего Symfony приложения с использованием Docker Compose в директории docker:
 
 ```bash
 docker-compose up -d
@@ -34,10 +29,10 @@ docker-compose up -d
 4. Примените миграции, чтобы создать базу данных и необходимые таблицы:
 
 ```bash
-docker-compose exec app php bin/console doctrine:migrations:migrate
+docker-compose exec php-fpm php bin/console doctrine:migrations:migrate
 ```
 
-5. Ваше Symfony приложение теперь доступно по адресу [http://localhost:80](http://localhost:80).
+5. Symfony приложение теперь доступно по адресу [http://127.0.0.1:888](http://127.0.0.1:888).
 
 ## Остановка и удаление контейнеров
 
@@ -45,3 +40,4 @@ docker-compose exec app php bin/console doctrine:migrations:migrate
 
 ```bash
 docker-compose down
+```
