@@ -21,7 +21,7 @@ class User
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * Электронная почта пользователя.
@@ -30,7 +30,7 @@ class User
      * @Assert\NotBlank(message="Email не должен быть пустым.")
      * @Assert\Email(message="Email '{{ value }}' не является допустимым email адресом.")
      */
-    private $email;
+    private string $email;
 
     /**
      * Имя пользователя.
@@ -39,7 +39,7 @@ class User
      * @Assert\NotBlank(message="Имя не должно быть пустым.")
      * @Assert\Length(max=255, maxMessage="Имя пользователя не должно превышать 255 символов.")
      */
-    private $name;
+    private string $name;
 
     /**
      * Возраст пользователя.
@@ -49,7 +49,7 @@ class User
      * @Assert\Type(type="integer", message="Возраст должен быть числом.")
      * @Assert\Range(min=0, max=150, notInRangeMessage="Возраст должен быть от {{ min }} до {{ max }} лет.")
      */
-    private $age;
+    private int $age;
 
     /**
      * Пол пользователя.
@@ -58,16 +58,15 @@ class User
      * @Assert\NotBlank(message="Пол не должен быть пустым.")
      * @Assert\Choice(choices={"male", "female"}, message="Пол должен быть 'male' или 'female'.")
      */
-    private $sex;
+    private string $sex;
 
     /**
      * Дата рождения пользователя.
      *
      * @ORM\Column(type="date")
      * @Assert\NotBlank(message="Дата рождения не должна быть пустой.")
-     * @Assert\Type("\DateTimeInterface")
      */
-    private $birthday;
+    private \DateTimeInterface $birthday;
 
     /**
      * Номер телефона пользователя.
@@ -76,21 +75,21 @@ class User
      * @Assert\NotBlank(message="Номер телефона не должен быть пустым.")
      * @Assert\Regex(pattern="/^\+\d{1,3} \(\d{3}\) \d{3}-\d{4}$/", message="Неправильный формат номера телефона.")
      */
-    private $phone;
+    private string $phone;
 
     /**
      * Дата и время создания записи о пользователе.
      *
      * @ORM\Column(type="datetime_immutable")
      */
-    private $created_at;
+    private \DateTimeImmutable $created_at;
 
     /**
      * Дата и время последнего обновления записи о пользователе.
      *
      * @ORM\Column(type="datetime")
      */
-    private $updated_at;
+    private \DateTimeInterface $updated_at;
 
     /**
      * Возвращает уникальный идентификатор пользователя.
